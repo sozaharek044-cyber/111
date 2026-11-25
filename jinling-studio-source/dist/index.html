@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101411">
+<meta name="description" content="以指尖塑金陵，体验南京纸盘面塑，在金陵粒子场中拨动与融合你的作品。">
+<title>金陵面塑工坊 · 指尖塑金陵</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="exhibition.css">
+<link rel="stylesheet" href="particles.css">
+<link rel="stylesheet" href="paper-studio.css">
+</head>
+<body>
+<header><div class="bar"><a class="brand" id="brandHome" href="#gallery"><span class="stamp" aria-hidden="true">金陵</span><span>金陵面塑工坊<small>JINLING DOUGH STUDIO</small></span></a>
+<nav aria-label="主导航"><a href="#gallery" id="navGallery" aria-current="page">圆盘展厅</a><a href="#particles" id="navParticles">粒子场</a></nav>
+<button id="sound" class="quiet" aria-pressed="false"><span aria-hidden="true">♫</span> 音效关</button></div></header>
+<main>
+<section id="gallery" class="gallery" aria-label="圆盘展厅">
+<div class="gallery-title">
+  <div class="eyebrow"><i></i> 南京非遗 · 数字展厅</div>
+  <h1>纸盘里的<em>金陵</em><span class="seal" aria-hidden="true">面塑</span></h1>
+  <p>十件南京风物，捏成纸盘上的浅浮雕。</p>
+  <div class="gallery-caption"><span>✦</span> 转动展盘，点选一件作品</div>
+  <button id="galleryParticles" class="particle-entry"><span aria-hidden="true">✧</span> 探索金陵粒子场</button>
+</div>
+<div id="orbit" class="orbit" aria-label="可转动的十件作品展盘">
+  <div class="orbit-glow"></div><div class="orbit-shadow"></div><div class="orbit-disc"></div>
+  <div class="orbit-ring orbit-ring-inner"></div><div class="orbit-ring orbit-ring-outer"></div>
+  <div class="orbit-center" aria-hidden="true"><span>金陵风物</span><small>纸盘面塑作品展</small></div>
+  <div id="choices" class="exhibits"></div>
+</div>
+<div class="gallery-controls"><button id="previousExhibit" class="quiet" aria-label="向左转动展盘">向左转</button><button id="nextExhibit" class="quiet" aria-label="向右转动展盘">向右转</button></div>
+</section>
+<div id="techniqueBand" class="technique-band" aria-label="南京面塑的四种技法">
+<span><b>印</b>按压取形</span><span><b>捏</b>拖捏塑形</span><span><b>镶</b>对位组装</span><span><b>滚</b>往返滚搓</span>
+</div>
+<section id="studio" hidden>
+<div class="studio-head"><button id="returnGallery" class="quiet">返回圆盘</button><div class="eyebrow"><i></i> 南京非遗 · 纸盘工坊</div></div>
+<section class="workshop" aria-label="交互工坊">
+
+<section class="stage" aria-label="面塑展示台">
+<div id="scene"></div>
+<div class="stage-tag"><i></i><span id="mode">成品预览</span></div>
+<button id="viewReset" class="view-reset" type="button" aria-label="复位视角" title="复位视角">⟳</button>
+<div class="stage-title"><span id="stageGenre">南京市花</span><h2 id="stageName">金陵梅花</h2></div>
+<div class="stage-tip" id="gesture">拖动纸盘 · 旋转观赏</div>
+<div id="burst" aria-hidden="true"></div>
+<div id="gestureLayer" class="gesture-layer" hidden></div>
+</section>
+<aside class="method" aria-label="制作步骤">
+<div class="method-top"><h2>盘上塑形</h2><span id="counter">0 / 4</span></div>
+<ol id="steps" class="steps"></ol>
+<div class="instruction"><strong id="instructionTitle">先看成品</strong><p id="instructionCopy">转动展台看看梅花，再从一团面开始动手。</p></div>
+<div id="progress" class="work-progress" hidden><div><span id="progressLabel">操作进度</span><span id="progressText">0%</span></div><progress id="progressMeter" max="100" value="0"></progress></div>
+<button id="action" class="primary">开始制作</button>
+<div class="extras"><button id="back" hidden>上一步</button><button id="restart" hidden>重新制作</button><button id="save" hidden>保存作品图</button><button id="finishGallery" hidden>返回圆盘</button></div>
+</aside>
+</section>
+</section>
+<section id="particles" class="particle-room" aria-labelledby="particleTitle" hidden>
+  <div class="particle-intro">
+    <div>
+      <div class="eyebrow"><i></i> 南京面塑 · 数字展演</div>
+      <h1 id="particleTitle" tabindex="-1">金陵<span>粒子场</span></h1>
+    </div>
+    <p>把面塑化为微光，拨动它们。<br>让不同的风物，在同一束粒子流里相遇。</p>
+  </div>
+  <div class="particle-layout">
+    <div class="field-column">
+      <div class="particle-field" id="particleField">
+        <div class="field-rings" aria-hidden="true"></div>
+        <div class="field-coordinate" aria-hidden="true"><i></i><span id="fieldFormationName">造型</span></div>
+        <button class="field-pause" id="fieldPause" type="button" aria-pressed="false">暂停流动</button>
+        <div id="particleSurface" class="particle-surface" tabindex="0" role="group" aria-label="可互动的粒子画布" aria-describedby="fieldHelp"></div>
+        <div id="fieldCursor" class="field-cursor" hidden aria-hidden="true"></div>
+        <p id="fieldLoading" class="field-loading" role="status">正在聚拢粒子…</p>
+        <div class="field-caption"><strong id="fieldTitle">金陵梅花</strong><span id="fieldCount"></span></div>
+        <div class="field-actions"><button id="scatterField" type="button">散开</button><button id="gatherField" type="button">归形</button></div>
+      </div>
+      <p id="fieldHelp" class="field-help">移动鼠标或用指尖滑动。按下可激起涟漪。键盘方向键可移动作用范围，空格可激起涟漪。</p>
+    </div>
+    <aside class="field-panel" aria-label="粒子场控制">
+      <div class="field-section">
+        <div class="field-section-head"><h2>作品组合</h2><output id="fieldSelectionCount">1 / 4</output></div>
+        <div id="fieldSources" class="field-sources"></div>
+        <p id="fieldSelectionHint" class="field-note" role="status">可同时选择最多四件作品。</p>
+      </div>
+      <div class="field-section">
+        <h2>粒子形态</h2>
+        <div id="fieldFormation" class="field-segments" role="group" aria-label="粒子形态">
+          <button type="button" data-value="shape" aria-pressed="true">保留造型</button>
+          <button type="button" data-value="flow" aria-pressed="false">汇成一流</button>
+        </div>
+      </div>
+      <div class="field-section">
+        <h2>触碰方式</h2>
+        <div id="fieldTool" class="field-segments" role="group" aria-label="触碰方式">
+          <button type="button" data-value="push" aria-pressed="true">拨开</button>
+          <button type="button" data-value="pull" aria-pressed="false">吸聚</button>
+          <button type="button" data-value="swirl" aria-pressed="false">旋绕</button>
+        </div>
+        <label class="field-range" for="fieldRadius">作用范围 <output id="fieldRadiusValue" for="fieldRadius">中</output></label>
+        <input id="fieldRadius" type="range" min="1" max="5" value="3">
+      </div>
+    </aside>
+  </div>
+  <div class="field-navigation"><button class="quiet" id="fieldBack" type="button">返回圆盘</button></div>
+</section>
+</main>
+<footer><span>金陵面塑工坊</span><span>南京面塑 · 非遗数字体验</span></footer>
+<div id="announce" class="sr" role="status"></div>
+<script type="module" src="app.js"></script>
+</body></html>
